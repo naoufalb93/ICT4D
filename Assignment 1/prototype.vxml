@@ -26,20 +26,32 @@
             <prompt>
                 Please start speaking after the beep. Press any button to finish recording.
             </prompt>
+
+
+            <filled>
+                <goto nextitem="post_recording_actions"/>
+            </filled>
+
         </record>
 
-        <menu id="post_recording_actions" dtmf="true">
-            <prompt>
-                You have finished recording. Press 1 to confirm your message. Press 2 to playback your message. Press 3
-                to retry your recording. Press 0 to cancel.
-            </prompt>
 
-            <choice dtmf="1" next="#submit_recording"/>
-            <choice dtmf="2" next="#replay_recording"/>
-            <choice dtmf="3" next="#recording"/>
-            <choice dtmf="0" next="#end_message"/>
-        </menu>
+    </form>
 
+
+    <menu id="post_recording_actions" dtmf="true">
+        <prompt>
+            You have finished recording. Press 1 to confirm your message. Press 2 to playback your message. Press 3
+            to retry your recording. Press 0 to cancel.
+        </prompt>
+
+        <choice dtmf="1" next="#submit_recording"/>
+        <choice dtmf="2" next="#replay_recording"/>
+        <choice dtmf="3" next="#recording"/>
+        <choice dtmf="0" next="#end_message"/>
+    </menu>
+
+
+    <form>
 
         <block name="submit_recording">
             <prompt>
@@ -61,8 +73,6 @@
 
             <goto nextitem="post_recording_actions"/>
         </block>
-
-
     </form>
 
 
@@ -71,7 +81,7 @@
             Thank you for your message. Press 1 to record another message
         </prompt>
 
-        <choice dtmf="1" next="@recording_form"/>
+        <choice dtmf="1" next="#recording_form"/>
 
         <noinput>
             <goto nextitem="end_message"/>
