@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version="2.1">
+
+    <menu id="welcome_language_selection" dtmf="true">
+        <prompt>
+            Welcome to milk pickup on demand. For English press 1. Also for English press 2.
+        </prompt>
+
+        <choice dtmf="1" next="#record_instructions"/>
+        <choice dtmf="2" next="#record_instructions"/>
+    </menu>
+
+    <menu id="record_instructions" dtmf="true">
+        <prompt>
+            To start recording your message press 1. To cancel press 0.
+        </prompt>
+
+        <choice dtmf="1" next="#recording_form"/>
+        <choice dtmf="0" next="#end_message"/>
+    </menu>
+
+
+    <form id="recording_form">
+
+        <record name="recording" beep="true" maxtime="120s">
+            <prompt>
+                Please start speaking after the beep. Press any button to finish recording.
+            </prompt>
+        </record>
+
+        <menu id="post_recording_actions" dtmf="true">
+            <prompt>
+                You have finished recording. Press 1 to confirm your message. Press 2 to playback your message. Press 3
+                to retry your recording. Press 0 to cancel.
+            </prompt>
+
+            <choice dtmf="1" next="#submit_recording"/>
+            <choice dtmf="2" next="#replay_recording"/>
+            <choice dtmf="3" next="#recording"/>
+            <choice dtmf="0" next="#end_message"/>
+        </menu>
+
+
+        <block name="submit_recording">
+            <prompt>
+                Thank you for submitting your message.
+            </prompt>
+
+            <!-- Submit goes here -->
+
+            <goto nextitem="#extra_recording"/>
+
+
+        </block>
+
+
+        <block name="replay_recording">
+            <prompt>
+                <value expr="recording"/>
+            </prompt>
+
+            <goto nextitem="#post_recording_actions"/>
+        </block>
+
+
+    </form>
+
+
+    <menu id="extra_recording">
+        <prompt>
+            Thank you for your message. Press 1 to record another message
+        </prompt>
+
+        <choice dtmf="1" next="@recording_form"/>
+
+        <noinput>
+            <goto nextitem="#end_message"/>
+        </noinput>
+
+    </menu>
+
+
+    <form id="end_message">
+        <prompt>
+            Thank your for calling, have a nice day.
+        </prompt>
+
+        <disconnect/>
+    </form>
+
+
+</vxml>
