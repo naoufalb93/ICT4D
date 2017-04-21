@@ -29,7 +29,7 @@
 
 
             <filled>
-                <goto nextitem="post_recording_actions"/>
+                <goto next="#post_recording_actions"/>
             </filled>
 
         </record>
