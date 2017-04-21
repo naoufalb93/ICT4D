@@ -51,9 +51,9 @@
     </menu>
 
 
-    <form>
+    <form id="submit_recording">
 
-        <block name="submit_recording">
+        <block>
             <prompt>
                 Thank you for submitting your message.
             </prompt>
@@ -64,9 +64,12 @@
 
 
         </block>
+    </form>
 
 
-        <block name="replay_recording">
+    <form id="replay_recording">
+
+        <block>
             <prompt>
                 <value expr="recording"/>
             </prompt>
