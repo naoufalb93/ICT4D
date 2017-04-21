@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vxml version="2.1">
 
+    <var name="recording" expr=""/>
+
     <menu id="welcome_language_selection" dtmf="true">
         <prompt>
             Welcome to milk pickup on demand. For English press 1. Also for English press 2.
@@ -22,13 +24,14 @@
 
     <form id="recording_form">
 
-        <record name="recording" beep="true" maxtime="120s">
+        <record name="recording_tmp" beep="true" maxtime="120s">
             <prompt>
                 Please start speaking after the beep. Press any button to finish recording.
             </prompt>
 
 
             <filled>
+                <assign name="recording" expr="recording_tmp"/>
                 <goto next="#post_recording_actions"/>
             </filled>
 
