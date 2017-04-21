@@ -60,7 +60,7 @@
 
             <!-- Submit goes here -->
 
-            <goto nextitem="extra_recording"/>
+            <goto next="#extra_recording"/>
 
 
         </block>
@@ -71,7 +71,7 @@
                 <value expr="recording"/>
             </prompt>
 
-            <goto nextitem="post_recording_actions"/>
+            <goto next="#post_recording_actions"/>
         </block>
     </form>
 
@@ -84,7 +84,7 @@
         <choice dtmf="1" next="#recording_form"/>
 
         <noinput>
-            <goto nextitem="end_message"/>
+            <goto next="#end_message"/>
         </noinput>
 
     </menu>
