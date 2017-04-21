@@ -46,7 +46,7 @@
 
         <choice dtmf="1" next="#submit_recording"/>
         <choice dtmf="2" next="#replay_recording"/>
-        <choice dtmf="3" next="#recording"/>
+        <choice dtmf="3" next="#recording_form"/>
         <choice dtmf="0" next="#end_message"/>
     </menu>
 
@@ -71,7 +71,8 @@
 
         <block>
             <prompt>
-                <value expr="recording"/>
+                You recorded the following.
+                <audio expr="recording"/>
             </prompt>
 
             <goto next="#post_recording_actions"/>
@@ -81,7 +82,7 @@
 
     <menu id="extra_recording">
         <prompt>
-            Thank you for your message. Press 1 to record another message
+            Press 1 to record another message.
         </prompt>
 
         <choice dtmf="1" next="#recording_form"/>
